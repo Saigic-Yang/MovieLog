@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MovieLog 观影洞察</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="phone-shell">
+      <header class="hero">
+        <h1>🎬 MovieLog</h1>
+        <p>观影数据纪录 · 分析 · 洞察</p>
+      </header>
+
+      <nav class="tabs">
+        <button class="tab active" data-tab="record">纪录</button>
+        <button class="tab" data-tab="insight">洞察</button>
+      </nav>
+
+      <section class="card" id="record-view">
+        <h2>新增观影记录</h2>
+        <form id="record-form" class="form-grid">
+          <label>
+            片名
+            <input id="title" required placeholder="例如：沙丘2" />
+          </label>
+
+          <label>
+            类型
+            <select id="genre"></select>
+          </label>
+
+          <label>
+            评分（1-5）
+            <input id="rating" type="range" min="1" max="5" step="0.5" value="4" />
+            <span class="hint" id="rating-value">4.0 ⭐</span>
+          </label>
+
+          <label>
+            日期
+            <input id="watch-date" type="date" required />
+          </label>
+
+          <label>
+            时长（分钟）
+            <input id="duration" type="number" min="1" value="120" required />
+          </label>
+
+          <label>
+            备注
+            <textarea id="note" rows="3" placeholder="这一场最震撼的镜头是..."></textarea>
+          </label>
+
+          <button type="submit" class="primary-btn">保存并分析</button>
+        </form>
+      </section>
+
+      <section class="card stack hidden" id="insight-view">
+        <h2>数据洞察面板</h2>
+        <div class="metrics">
+          <article><span>累计观影</span><strong id="total-movies">0 部</strong></article>
+          <article><span>平均评分</span><strong id="avg-rating">0.00 ⭐</strong></article>
+          <article><span>本月进度</span><strong id="month-progress">0 部</strong></article>
+          <article><span>总时长</span><strong id="total-hours">0.0 小时</strong></article>
+        </div>
+
+        <article class="panel">
+          <h3>偏好类型</h3>
+          <p>你最常看的类型是：<strong id="top-genre">暂无数据</strong></p>
+          <div id="genre-bars" class="bars"></div>
+        </article>
+
+        <article class="panel">
+          <h3>最近纪录</h3>
+          <p id="empty-state" class="empty">还没有数据，先去添加你的第一条观影纪录吧。</p>
+          <ul id="recent-list" class="record-list"></ul>
+        </article>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
